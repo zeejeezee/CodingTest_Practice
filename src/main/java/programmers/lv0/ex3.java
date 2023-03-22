@@ -1,6 +1,7 @@
 package programmers.lv0;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class ex3 {
 	
@@ -85,7 +86,95 @@ public class ex3 {
         return answer;
     }
     
+    //배열 두 배 만들기
+    //정수 배열 numbers가 매개변수로 주어집니다.
+    //numbers의 각 원소에 두배한 원소를 가진 배열을 return하도록 solution 함수를 완성해 주세요.
+    
+    public int[] solution6(int[] numbers) {
+        int[] answer = new int[numbers.length];
+        
+        for(int i = 0; i < numbers.length; i++){
+            answer[i] = numbers[i] * 2;
+        }
+        
+        return answer;
+    }    
+    
+    
+    //순서쌍의 개수
+    //순서쌍이란 두 개의 숫자를 순서를 정하여 짝지어 나타낸 쌍으로 (a, b)로 표기합니다.
+    //자연수 n이 매개변수로 주어질 때 두 숫자의 곱이 n인 자연수 순서쌍의 개수를 return하도록 solution 함수를 완성해 주세요.
+    
+    public int solution7(int n) {
+        int answer = 0;
+        
+        for(int i = 1; i <= n; i++){
+            if(n % i == 0){ //매개변수 n을 i로 나눴을 때 나머지가 0이라면
+                answer++;
+            }
+            
+        }
+        return answer;
+    }
+    
+    //다른 사람 풀이
+    //InsStream이 뭔지 공부하기
+    public int solution7_1(int n) {
+        return (int) IntStream.rangeClosed(1, n).filter(i -> n % i == 0).count();
+    }
+    
+    
+    //옷가게 할인 받기
+    //머쓱이네 옷가게는 10만 원 이상 사면 5%, 30만 원 이상 사면 10%, 50만 원 이상 사면 20%를 할인해 줍니다.
+    //구매한 옷의 가격 price가 주어질 때, 지불해야 할 금액을 return 하도록 solution 함수를 완성해 보세요.
+    public int solution8(int price) {
+        int answer = 0;
+        
+        if(price >= 100000 && price < 300000) {
+            answer = (int)(price * 0.95);
+        }
+        else if(price >= 300000 && price < 500000) {
+            answer = (int)(price * 0.9);
+        }
+        else if(price >= 500000) {
+            answer = (int)(price * 0.8);
+        }
+        else {
+            answer = price;
+        }
+        
+        return answer;
+    }
+    
+    
+    //삼각형의 완성 조건(1)
+    //선분 세 개로 삼각형을 만들기 위해서는 다음과 같은 조건을 만족해야 합니다.
+    //가장 긴 변의 길이는 다른 두 변의 길이의 합보다 작아야 합니다.
+    //삼각형의 세 변의 길이가 담긴 배열 sides이 매개변수로 주어집니다.
+    //세 변으로 삼각형을 만들 수 있다면 1, 만들 수 없다면 2를 return하도록 solution 함수를 완성해 주세요.
+    
+    public int solution9(int[] sides) {
+        
+        //Arrays.sort() : 배열 오름차순 정렬
+        Arrays.sort(sides);    
+        
+        //sides[0]과 sides[1]의 합이 sides[2]보다 크다면 1, 작다면 2
+        return sides[0] + sides[1] > sides[2] ? 1 : 2;
+    }
+    
+    
+    //배열 원소의 길이
+    //문자열 배열 strlist가 매개변수로 주어집니다.
+    //strlist 각 원소의 길이를 담은 배열을 return하도록 solution 함수를 완성해 주세요.
 
-
-
+    public int[] solution10(String[] strlist) {
+        
+        int[] answer = new int[strlist.length];
+        
+        for(int i = 0; i < strlist.length; i++) {
+            answer[i] = strlist[i].length();
+        }
+        
+        return answer;
+    }
 }
