@@ -1,5 +1,8 @@
 package programmers.lv0;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class ex4 {
 	
 	//개미군단
@@ -115,5 +118,104 @@ public class ex4 {
     }
     
     
+    //세균 증식
+    //어떤 세균은 1시간에 두배만큼 증식한다고 합니다.
+    //처음 세균의 마리수 n과 경과한 시간 t가 매개변수로 주어질 때
+    //t시간 후 세균의 수를 return하도록 solution 함수를 완성해 주세요.
+    
+    public int solution6(int n, int t) {
+        
+        for (int i = 1; i <= t; i++) {
+            n = n * 2;
+        }
+        
+        return n;
+    }    
+    
+    
+    //문자열 정렬하기 (1)
+    //문자열 my_string이 매개변수로 주어질 때, my_string 안에 있는 숫자만 골라 
+    //오름차순 정렬한 리스트를 return 하도록 solution 함수를 작성해 보세요.
+    
+    //모르겠어서 구글링 후 푼 문제! 다시 공부하기
+    
+    public int[] solution7(String my_string) {
+        
+        String arr = my_string.replaceAll("[^0-9]", "");
+        
+        int[] answer = Stream.of(arr.split("")).mapToInt(Integer::parseInt).toArray();
+        
+        Arrays.sort(answer);
+        return answer;
+    }
+    
+    
+    //가위 바위 보
+    //가위는 2 바위는 0 보는 5로 표현합니다.
+    //가위 바위 보를 내는 순서대로 나타낸 문자열 rsp가 매개변수로 주어질 때, rsp에 저장된 가위 바위 보를
+    //모두 이기는 경우를 순서대로 나타낸 문자열을 return하도록 solution 함수를 완성해 보세요.
+    
+    public String solution8(String rsp) {
+        String answer = "";
+        
+        for (int i = 0; i < rsp.length(); i++) {
+            answer += (rsp.split("")[i].equals("0") ? "5" : rsp.split("")[i].equals("2") ? "0" : rsp.split("")[i].equals("5") ? "2" : "1"); 
+        }
+        return answer;
+    }
 	
+    
+    //암호 해독(다른 풀이 많이 보기)
+    //군 전략가 머쓱이는 전쟁 중 적군이 다음과 같은 암호 체계를 사용한다는 것을 알아냈습니다.
+    //암호화된 문자열 cipher를 주고받습니다.
+    //그 문자열에서 code의 배수 번째 글자만 진짜 암호입니다.
+    //문자열 cipher와 정수 code가 매개변수로 주어질 때 해독된 암호 문자열을 return하도록 solution 함수를 완성해 주세요.
+    
+    public String solution9(String cipher, int code) {
+        String answer = "";
+        String[] arr = cipher.split(""); //문자열 chpher를 쪼개서 배열에 넣음
+        
+        for (int i = 0; i < arr.length; i++) {
+            if ((i + 1) % code == 0) {
+                answer += arr[i];
+            }
+        }
+        
+        return answer;
+    }
+    
+    //다른 사람 풀이
+    public String solution9_1(String cipher, int code) {
+        String answer = "";
+
+        for (int i = code; i <= cipher.length(); i = i + code) {
+            answer += cipher.substring(i - 1, i);
+        }
+
+        return answer;
+    }
+    
+    
+    //대문자와 소문자
+    //문자열 my_string이 매개변수로 주어질 때,
+    //대문자는 소문자로 소문자는 대문자로 변환한 문자열을 return하도록 solution 함수를 완성해 주세요.
+    
+    //대문자 -> 소문자, 소문자 -> 대문자
+    
+    public String solution10(String my_string) {
+        String answer = "";
+        
+        for(int i = 0; i < my_string.length(); i++){
+            if (Character.isUpperCase(my_string.charAt(i))){
+                answer += Character.toLowerCase(my_string.charAt(i));
+            } else {
+                answer += Character.toUpperCase(my_string.charAt(i));
+            }
+        }
+
+        return answer;
+    }
+    
+    
+    
 }
