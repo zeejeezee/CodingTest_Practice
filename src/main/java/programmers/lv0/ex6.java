@@ -1,5 +1,9 @@
 package programmers.lv0;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ex6 {
 	
 	//배열 회전시키기
@@ -94,12 +98,170 @@ public class ex6 {
         return answer;
     }
     
+    //약수 구하기
+    //정수 n이 매개변수로 주어질 때, n의 약수를 오름차순으로 담은 배열을 return하도록
+    //solution 함수를 완성해 주세요.
     
-    //369게임
-    //머쓱이는 친구들과 369게임을 하고 있습니다.
-    //369게임은 1부터 숫자를 하나씩 대며 3, 6, 9가 들어가는 숫자는 숫자 대신 3, 6, 9의 개수만큼 박수를 치는 게임입니다.
-    //머쓱이가 말해야하는 숫자 order가 매개변수로 주어질 때,
-    //머쓱이가 쳐야할 박수 횟수를 return 하도록 solution 함수를 완성해보세요.
+    public int[] solution5(int n) {
+        int[] arr = new int[10000];
+        int index = 0;
+        
+        for (int i = 1; i <= n; i++) {
+            if(n % i ==0) {
+                arr[index] = i;
+                index++;
+            }
+        }
+        
+        int[] answer = new int[index];
+        for (int i = 0; i < index; i++) {
+            if(arr[i] != 0) {
+                answer[i] = arr[i];
+            }
+        }
+        
+        return answer;
+    }
+    
+    //다른 사람 풀이
+    public int[] solution5_1(int n) {
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 1; i <= n / 2; i++) {
+            if (n % i == 0) {
+                list.add(i);
+            }
+        }
+
+        list.add(n);
+
+        return list.stream().mapToInt(e -> e).toArray();
+    }
+    
+    
+    //숫자 찾기
+    //정수 num과 k가 매개변수로 주어질 때,
+    //num을 이루는 숫자 중에 k가 있으면 num의 그 숫자가 있는 자리 수를 return하고
+    //없으면 -1을 return 하도록 solution 함수를 완성해 보세요.
+    
+    public int solution6(int num, int k) {
+        int answer = 0;
+        String[] str = String.valueOf(num).split("");
+        //num을 문자열로 형변환
+        
+        for (int i = 0; i < str.length; i++) {
+            if (str[i].equals(String.valueOf(k))) {
+                answer = i + 1;
+                break;
+            } else {
+                answer = -1;
+            }
+        }
+
+        return answer;
+    }
+    
+    
+    //문자열 정렬하기 (2)
+    //영어 대소문자로 이루어진 문자열 my_string이 매개변수로 주어질 때,
+    //my_string을 모두 소문자로 바꾸고 알파벳 순서대로 정렬한 문자열을 return 하도록 solution 함수를 완성해 보세요.
+    
+    public String solution7(String my_string) {
+        String answer = "";
+        
+        my_string = my_string.toLowerCase(); //소문자 변환
+        char[] strChar = my_string.toCharArray(); //String을 char형 배열로 변환
+        Arrays.sort(strChar);
+        
+        answer = new String(strChar);
+        
+        return answer;
+    }
+    
+    
+    //합성수 찾기
+    //약수의 개수가 세 개 이상인 수를 합성수라고 합니다.
+    //자연수 n이 매개변수로 주어질 때
+    //n 이하의 합성수의 개수를 return하도록 solution 함수를 완성해 주세요.
+    
+    //합성수란
+    //1보다 큰 자연수 중에서 소수가 아닌 수로,
+    //약수의 개수가 3개 이상이고 둘 이상의 소수를 곱한 자연수
+    
+    //약수가 3개 이상인 수를 구하면 됨
+    
+    public int solution8(int n) {
+        int answer = 0;
+        
+        for (int i = 1; i <= n; i++) {
+            int count = 0;
+            for(int j = 1; j <= i; j++) {
+                if (i % j == 0) 
+                    count = count + 1;
+            }
+            
+            answer += (count >= 3) ? 1 : 0;
+        }
+        
+        return answer;
+    }
+    
+    
+    //중복된 문자 제거
+    //문자열 my_string이 매개변수로 주어집니다.
+    //my_string에서 중복된 문자를 제거하고 하나의 문자만 남긴 문자열을 return하도록 solution 함수를 완성해 주세요.
+    
+    //구글링 참고
+    //indexOf(), charAt()
+    
+    public String solution9(String my_string) {
+        String answer = "";
+        
+        for (int i = 0; i < my_string.length(); i++) {
+            if(my_string.indexOf(my_string.charAt(i)) == i)
+                answer += my_string.charAt(i);
+        }
+
+        return answer;
+    }
+    
+    
+    //모스부호 (1)
+    //머쓱이는 친구에게 모스부호를 이용한 편지를 받았습니다.
+    //그냥은 읽을 수 없어 이를 해독하는 프로그램을 만들려고 합니다.
+    //문자열 letter가 매개변수로 주어질 때,
+    //letter를 영어 소문자로 바꾼 문자열을 return 하도록 solution 함수를 완성해보세요.
+    //모스부호는 다음과 같습니다.
+
+    /* morse = { 
+        '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',
+        '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',
+        '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',
+        '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',
+        '-.--':'y','--..':'z'
+    }; */
+    
+    public String solution10(String letter) {
+        String answer = "";
+        String[] morseList = {".-","-...","-.-.","-..",".","..-.",
+                "--.","....","..",".---","-.-",".-..","--","-.",
+                "---",".--.","--.-",".-.","...","-","..-","...-",
+                ".--","-..-","-.--","--.."};
+        
+        String[] morse;
+        morse = letter.split(" ");
+        
+        for(String str : morse) {
+            for(int i = 0; i < morseList.length; i++) {
+                if(str.equals(morseList[i])) {
+                    answer += Character.toString(i + 'a');
+                }
+            }
+        }
+        
+        return answer;
+    }
+    
     
     
     
