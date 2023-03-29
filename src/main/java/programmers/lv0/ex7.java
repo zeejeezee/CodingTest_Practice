@@ -116,20 +116,42 @@ public class ex7 {
     //정수 배열 array와 정수 n이 매개변수로 주어질 때,
     //array에 들어있는 정수 중 n과 가장 가까운 수를 return 하도록 solution 함수를 완성해주세요.
     
-    class Solution5 {
-        public int solution(int[] array, int n) {
-            Arrays.sort(array);
-            
-            for(int i = 0; i < array.length; i++) {
-                if(array[i] >= n) {
-                    int left = n - array[(i-1)];
-                    int right = array[i] - n;
-                    return left <= right ? array[(i-1)] : array[i];
+    public int solution5(int[] array, int n) {
+        Arrays.sort(array);
+        
+        for(int i = 0; i < array.length; i++) {
+            if(array[i] >= n) {
+                int left = n - array[(i-1)];
+                int right = array[i] - n;
+                return left <= right ? array[(i-1)] : array[i];
+            }
+        }
+
+        return array[array.length - 1];
+    }
+    
+    
+    //진료 순서 정하기
+    //외과의사 머쓱이는 응급실에 온 환자의 응급도를 기준으로 진료 순서를 정하려고 합니다.
+    //정수 배열 emergency가 매개변수로 주어질 때 응급도가 높은 순서대로
+    //진료 순서를 정한 배열을 return하도록 solution 함수를 완성해 주세요.
+    
+    public int[] solution6(int[] emergency) {
+        int[] answer = new int[emergency.length];
+        int[] sortEmergency = Arrays.copyOf(emergency, emergency.length);
+        Arrays.sort(sortEmergency); //오름차순 정렬
+        
+        for (int i = 0; i < emergency.length; i++) {
+            for (int j = 0; j < sortEmergency.length; j++) {
+                if (emergency[i] == sortEmergency[j]) {
+                    answer[j] = emergency.length - i;
                 }
             }
-
-            return array[array.length - 1];
-        }   
+        }
+        
+        return answer;
+    }
+        
     
     
     
