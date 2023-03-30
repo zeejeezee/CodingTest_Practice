@@ -151,7 +151,109 @@ public class ex7 {
         
         return answer;
     }
+    
+    
+    //한 번만 등장한 문자
+    //문자열 s가 매개변수로 주어집니다. 
+    //s에서 한 번만 등장하는 문자를 사전 순으로 정렬한 문자열을 return 하도록 solution 함수를 완성해 보세요.
+    //한 번만 등장하는 문자가 없을 경우 빈 문자열을 return 합니다.
         
+    public String solution7(String s) {
+        String answer = "";
+        //abcdefghijklmnopqrstuvwxyz
+        int[] arr = new int[26];
+        
+        for(int i = 0; i < 26; i++) {
+            arr[i] = 0;
+        }
+        
+        for(int i = 0; i < s.length(); i++){
+            arr[s.charAt(i) - 97] += 1;
+        }
+        
+        for(int i = 0; i < 26; i++) {
+            if (arr[i] == 1) {
+                answer += (char)(i + 97);
+            }
+        }
+        
+        return answer;
+    }
+    
+    public String solution7_1(String s) {
+        int[] alpha = new int[26];
+        for(char c : s.toCharArray()){
+            alpha[c - 'a']++;
+        }
+
+        StringBuilder answer = new StringBuilder();
+        for(int i = 0; i < 26; i++){
+            if(alpha[i] == 1){
+                answer.append((char)(i + 'a'));
+            }
+        }
+        return answer.toString();
+    }
+    
+    
+    //숨어있는 숫자의 덧셈 (2)
+    //문자열 my_string이 매개변수로 주어집니다. my_string은 소문자, 대문자, 자연수로만 구성되어 있습니다.
+    //my_string안의 자연수들의 합을 return하도록 solution 함수를 완성해 주세요.
+    
+    public int solution8(String my_string) {
+        String[] num = my_string.replaceAll("[^0-9]", " ").split(" ");
+        
+        int answer = 0;
+        for(int i = 0; i < num.length; i++) {
+            if(num[i].equals("")) {
+                continue;
+            } else {
+                answer += Integer.parseInt(num[i].trim());
+            }
+        }
+        
+        return answer;
+    }
+    
+    
+    //이진수 더하기
+    //이진수를 의미하는 두 개의 문자열 bin1과 bin2가 매개변수로 주어질 때,
+    //두 이진수의 합을 return하도록 solution 함수를 완성해 주세요.
+    
+    public String solution9(String bin1, String bin2) {
+        //parseInt(String s, int radix)
+        //parseInt(String 문자열, int 진수)
+        String answer = "";
+        
+        int num1 = Integer.parseInt(bin1, 2);
+        int num2 = Integer.parseInt(bin2, 2);
+        int sum = num1 + num2;
+        answer = Integer.toBinaryString(sum);
+        
+        return answer;
+    }
+    
+    
+    //7의 개수
+    //머쓱이는 행운의 숫자 7을 가장 좋아합니다.
+    //정수 배열 array가 매개변수로 주어질 때, 7이 총 몇 개 있는지 return 하도록 solution 함수를 완성해 보세요.
+    
+    public int solution10(int[] array) {
+        int answer = 0;
+        
+        for (int i = 0; i < array.length; i++) {
+            String num = Integer.toString(array[i]); //array[i]를 문자열로 변환
+            String[] arr = num.split(""); //num을 쪼개서 배열로 만듦
+            
+            for (int j = 0; j < arr.length; j++) {
+                if(arr[j].equals("7")) {
+                    answer++;
+                }
+            }
+        }
+        
+        return answer;
+    }
     
     
     
