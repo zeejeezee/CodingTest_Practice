@@ -1,6 +1,7 @@
 package programmers.lv0;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ex8 {
@@ -81,6 +82,20 @@ public class ex8 {
     //이 때 "Z"가 나오면 바로 전에 더했던 숫자를 뺀다는 뜻입니다.
     //숫자와 "Z"로 이루어진 문자열 s가 주어질 때, 머쓱이가 구한 값을 return 하도록 solution 함수를 완성해 보세요.
     
-    
+    public int solution4(String s) {
+        ArrayList<String> arr = new ArrayList<>(Arrays.asList(s.split(" ")));
+        int answer = 0;
+        
+        while (arr.contains("Z")) { //Z가 있으면
+            arr.remove(arr.indexOf("Z") - 1); //Z 하나 전에 있는 숫자 제거
+            arr.remove(arr.indexOf("Z")); //Z 제거
+        }
+        
+        for (int i = 0; i < arr.size(); i++) {
+            answer += Integer.parseInt(arr.get(i));
+        }
+        
+        return answer;
+    }
     
 }
