@@ -1,6 +1,9 @@
 package programmers.lv0;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ex9 {
@@ -128,6 +131,33 @@ public class ex9 {
             
             answer += coupon;
         }
+        
+        return answer;
+    }
+    
+    
+    //등수 매기기
+    //영어 점수와 수학 점수의 평균 점수를 기준으로 학생들의 등수를 매기려고 합니다.
+    //영어 점수와 수학 점수를 담은 2차원 정수 배열 score가 주어질 때,
+    //영어 점수와 수학 점수의 평균을 기준으로 매긴 등수를 담은 배열을 return하도록 solution 함수를 완성해 주세요.
+    
+    public int[] solution6(int[][] score) {
+        List<Integer> scoreList = new ArrayList<>();
+        
+        for(int[] t : score) {
+            scoreList.add(t[0] + t[1]);
+        }
+        
+        //Comparator : 정렬을 위해 사용하는 인터페이스
+        //Comparator.reverseOrder() : 내림차순 정렬
+        scoreList.sort(Comparator.reverseOrder());
+        
+        //indexOf() : 특정 문자나 문자열이 앞에서부터 처음 발견되는 인덱스를 반환
+        int[] answer = new int[score.length];
+        for(int i = 0; i < score.length; i++) {
+            answer[i] = scoreList.indexOf(score[i][0] + score[i][1]) + 1;
+        } //index가 0부터 시작하기 때문에 1을 더해 준다
+        
         
         return answer;
     }
