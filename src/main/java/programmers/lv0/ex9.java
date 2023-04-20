@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class ex9 {
 	
@@ -205,8 +206,56 @@ public class ex9 {
     	
     	return answer;
     }
+    
+    
+    //a와 b 출력하기
+    //정수 a와 b가 주어집니다.
+    //각 수를 입력받아 입출력 예와 같은 형식으로 출력하는 코드를 작성해 보세요.
+    
+    public static void main1(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
 
-
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+    }
+    
+    
+    //문자열 출력하기
+    //문자열 str이 주어질 때, str을 출력하는 코드를 작성해 보세요.
+    
+    public static void main2(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        
+        System.out.println(a);
+    }
+    
+    
+    //저주의 숫자 3
+    //3x 마을 사람들은 3을 저주의 숫자라고 생각하기 때문에 3의 배수와 숫자 3을 사용하지 않습니다.
+    //3x 마을 사람들의 숫자는 다음과 같습니다.
+    
+    //1 -> 1 / 2 -> 2 / 3 -> 4 / 4 -> 5 / 5 -> 7 / 6 -> 8 / 7 -> 10 / 8 -> 11 / 9 -> 14 / 10 -> 16
+    
+    ///정수 n이 매개변수로 주어질 때,
+    //n을 3x 마을에서 사용하는 숫자로 바꿔 return하도록 solution 함수를 완성해 주세요.
+    
+    public int solution8(int n) {
+        int answer = n;
+        int i = 1;
+        
+        //contains() : 해당 문자열을 포함하는지
+        while (i <= answer) {
+            if ((i % 3 == 0) || String.valueOf(i).contains("3")) {
+                answer++;
+            }
+            i++;
+        }
+        
+        return answer;
+    }
 
     
 }
