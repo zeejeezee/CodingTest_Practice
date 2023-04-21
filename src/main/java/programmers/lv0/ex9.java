@@ -1,6 +1,8 @@
 package programmers.lv0;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -256,6 +258,36 @@ public class ex9 {
         
         return answer;
     }
+    
+    
+    //특이한 정렬
+    //정수 n을 기준으로 n과 가까운 수부터 정렬하려고 합니다.
+    //이때 n으로부터의 거리가 같다면 더 큰 수를 앞에 오도록 배치합니다.
+    //정수가 담긴 배열 numlist와 정수 n이 주어질 때 numlist의 원소를 n으로부터 가까운 순서대로
+    //정렬한 배열을 return하도록 solution 함수를 완성해 주세요.
+    
+    //구글링
+    //내일 다시 보기
+	public int[] solution9(int[] numlist, int n) {
+		List<Integer> nums = new ArrayList<>();
+		Arrays.sort(numlist);
+		for (int num : numlist) nums.add(num);
+		nums.sort((s1, s2) -> Integer.compare(Math.abs(s2 - n), Math.abs(s1 - n)));
+		Collection.reverse(nums);
+		return nums.stream().mapToInt(num -> num).toArray();
+	}
+
+	public static void main(String[] args) {
+		UniqueSort uniqueSort = new UniqueSort();
+		String output1 = Arrays.toString(uniqueSort.solution(new int[]{1, 2, 3, 4, 5, 6}, 4));
+		System.out.println(output1 + " " + output1.equals("[4, 5, 3, 6, 2, 1]"));
+
+		String output2 = Arrays.toString(uniqueSort.solution(new int[]{10000, 20, 36, 47, 40, 6, 10, 7000}, 30));
+		System.out.println(output2 + " " + output2.equals("[36, 40, 20, 47, 10, 6, 7000, 10000]"));
+
+		String output3 = Arrays.toString(uniqueSort.solution(new int[]{10,9,8,7,6,5,4,3,2,1,11}, 6));
+		System.out.println(output3 + " " + output3.equals("[6, 7, 5, 8, 4, 9, 3, 10, 2, 11, 1]"));
+	}
 
     
 }
