@@ -268,45 +268,65 @@ public class ex9 {
     
     //구글링
     //내일 다시 보기
-	public static int value = 0;
-	
-	public int[] solution9(int[] numlist, int n) {
-		int size = numlist.length;
-		value = n;
-		int[] answer = new int[size];
-		boolean[] used = new boolean[size];
-		
-		for(int i = 0; i < size; i++) {
-			int index = -1;
-			for(int j = 0; j < size; j++) {
-				if(used[j]) {
-					continue;
-				}
-				
-				if(index == -1) {
-					index = j;
-					continue;
-				}
-				
-				int prev = numlist[index];
-				int now = numlist[j];
-				
-				if(Math.abs(n-prev) > Math.abs(n-now)) {
-					index = j;
-					continue;
-				}
-				
-				if(Math.abs(n-prev) == Math.abs(n-now) && prev < now) {
-					index = j;
-				}
-				
-				used[index] = true;
-				answer[i] = numlist[index];
-			}
-		}
-		
-		return answer;	
-	}
+    private static int value = 0;
+    
+    public int[] solution9(int[] numlist, int n) {
+        int size = numlist.length;
+        value = n;
+        int[] answer = new int[size];
+        boolean[] used = new boolean[size];
+        for(int i = 0 ; i < size ; i++){
+            int index = -1;
+            for(int j = 0 ; j < size ; j++){
+                if(used[j]){
+                    continue;
+                }
+                if(index == -1){
+                index = j;
+                    continue;
+                }
+                int prev = numlist[index];
+                int now = numlist[j];
+                if(Math.abs(n-prev) > Math.abs(n-now)){
+                    index = j;
+                    continue;
+                }
+                if(Math.abs(n-prev) == Math.abs(n-now) && prev < now){
+                    index = j;
+                }
+            }
+            used[index] = true;
+            answer[i] = numlist[index];
+        }
+ 
+        return answer;
+    }
+    
+    public int[] solution9_1(int[] numlist, int n) {
+
+        int size = numlist.length;
+        for(int i=0; i<size-1; i++){
+            for(int k=i+1; k<size; k++){
+                int a = (numlist[i] - n) * (numlist[i] > n ? 1 : -1);
+                int b = (numlist[k] - n) * (numlist[k] > n ? 1 : -1);
+                if(a > b || (a == b && numlist[i] < numlist[k])){
+                    int temp = numlist[i];
+                    numlist[i] = numlist[k];
+                    numlist[k] = temp;
+                }
+
+            }
+        }
+        return numlist;
+    }
+    
+    public int[] solution9_2(int[] numList, int n) {
+        return Arrays.stream(numList)
+                .boxed()
+                .sorted((a, b) -> Math.abs(a - n) == Math.abs(b - n) ? b.compareTo(a) : Integer.compare(Math.abs(a - n), Math.abs(b - n)))
+                .mapToInt(Integer::intValue)
+                .toArray();
+    }
 
     
 }
