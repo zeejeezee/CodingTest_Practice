@@ -1,5 +1,7 @@
 package programmers.lv0;
 
+import java.util.Arrays;
+
 public class ex10 {
 	
 	//다항식 더하기
@@ -100,6 +102,40 @@ public class ex10 {
                 } else {
                     answer[i] = "X";
                 }
+            }
+        }
+        
+        return answer;
+    }
+    
+    
+    //최빈값 구하기
+    //최빈값은 주어진 값 중에서 가장 자주 나오는 값을 의미합니다.
+    //정수 배열 array가 매개변수로 주어질 때, 최빈값을 return 하도록 solution 함수를 완성해 보세요.
+    //최빈값이 여러 개면 -1을 return 합니다.
+    
+    public int solution4(int[] array) {
+        int answer = 0;
+        int max = 0;
+        
+        Arrays.sort(array);
+        max = array[array.length - 1];
+        //오름차순 정렬 후 제일 큰 수를 max로 설정
+        
+        int count[] = new int[max + 1];
+        for(int i = 0; i < array.length; i++) {
+            count[array[i]]++; //각 수의 index에 count
+        }
+        
+        max = count[0];
+        
+        //가장 큰 count 값을 max로 설정
+        for(int i = 1; i < count.length; i++) {
+            if(max < count[i]) {
+                max = count[i];
+                answer = i; //max 값이 바뀔 때 최빈값
+            } else if(max == count[i]) { //최빈값이 2개 이상인 경우
+                answer = -1;
             }
         }
         
