@@ -42,8 +42,17 @@ public class ex11 {
     //공배수
     //정수 number와 n, m이 주어집니다.
     //number가 n의 배수이면서 m의 배수이면 1을 아니라면 0을 return하도록 solution 함수를 완성해 주세요.
+    
     public int solution5(int number, int n, int m) {
         return number % n == 0 && number % m == 0 ? 1 : 0;
+    }
+    
+    
+    //문자열을 정수로 변환
+    //숫자로만 이루어진 문자열 n_str이 주어질 때, n_str을 정수로 변환하여 return하도록 solution 함수를 완성해 주세요.
+    
+    public int solution6(String n_str) {
+        return Integer.parseInt(n_str);
     }
         
 
