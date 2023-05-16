@@ -69,6 +69,52 @@ public class ex11 {
     public int solution8(int num, int n) {
         return num % n == 0 ? 1 : 0;
     }
+    
+    
+    //길이에 따른 연산
+    //정수가 담긴 리스트 num_list가 주어질 때,
+    //리스트의 길이가 11 이상이면 리스트에 있는 모든 원소의 합을
+    //10 이하이면 모든 원소의 곱을 return하도록 solution 함수를 완성해 주세요.
+    
+    public int solution9(int[] num_list) {
+        int answer = 0;
+        int sum = 0;
+        int mul = 1; //0으로 곱하면 0이 되기 때문에 1로 해야 함
+        
+        if (num_list.length >= 11) {
+            for (int i = 0; i < num_list.length; i++) {
+                sum += num_list[i];
+            }
+            answer = sum;
+        } else {
+            for (int i = 0; i < num_list.length; i++) {
+                mul *= num_list[i];
+            }
+            answer = mul;
+        }
+        
+        return answer;
+    }
+    
+    //조금 더 깔끔하게 바꾸면
+    
+    public int solution9_1(int[] num_list) {
+        int answer = 0;
+        int sum = 0;
+        int mul = 1;
+        
+        for (int i = 0; i < num_list.length; i++) {
+            if (num_list.length >= 11) {
+                sum += num_list[i];
+                answer = sum;
+            } else {
+                mul *= num_list[i];
+                answer = mul;
+            }
+        }
+        
+        return answer;
+    }
 
     
 }
