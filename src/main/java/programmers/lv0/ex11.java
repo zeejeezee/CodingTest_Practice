@@ -1,5 +1,8 @@
 package programmers.lv0;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ex11 {
 	
 	//문자열의 앞의 n글자
@@ -86,6 +89,20 @@ public class ex11 {
         
         for (int i = 0; i < n; i++) {
             answer[i] = num_list[i];
+        }
+        
+        return answer;
+    }
+    
+    
+    //카운트 업
+    //정수 start와 end가 주어질 때, start부터 end까지의 숫자를 차례로 담은 리스트를 return하도록 solution 함수를 완성해 주세요.
+    
+    public List solution7(int start, int end) {
+        List<Integer> answer = new ArrayList<>();
+        
+        for(int i = start; i <= end; i++) {
+            answer.add(i);
         }
         
         return answer;
