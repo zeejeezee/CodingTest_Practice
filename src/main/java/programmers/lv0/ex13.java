@@ -1,6 +1,8 @@
 package programmers.lv0;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ex13 {
 	
@@ -96,6 +98,20 @@ public class ex13 {
         
         for(String i : numArr) {
             answer += Integer.valueOf(i);
+        }
+        
+        return answer;
+    }
+    
+    
+    //배열 만들기
+    //정수 n과 k가 주어졌을 때, 1 이상 n이하의 정수 중에서 k의 배수를 오름차순으로 저장한 배열을 return 하는 solution 함수를 완성해 주세요.
+    
+    public List solution(int n, int k) {
+        List<Integer> answer = new ArrayList<>();
+        
+        for(int i = 1; k * i <= n; i++) {
+            answer.add(k * i);
         }
         
         return answer;
