@@ -107,7 +107,7 @@ public class ex13 {
     //배열 만들기
     //정수 n과 k가 주어졌을 때, 1 이상 n이하의 정수 중에서 k의 배수를 오름차순으로 저장한 배열을 return 하는 solution 함수를 완성해 주세요.
     
-    public List solution(int n, int k) {
+    public List solution8(int n, int k) {
         List<Integer> answer = new ArrayList<>();
         
         for(int i = 1; k * i <= n; i++) {
@@ -122,7 +122,7 @@ public class ex13 {
     //정수 리스트 num_list와 정수 n이 주어질 때,
     //num_list의 첫 번째 원소부터 마지막 원소까지 n개 간격으로 저장되어있는 원소들을 차례로 담은 리스트를 return하도록 solution 함수를 완성해 주세요.
     
-    public List solution(int[] num_list, int n) {
+    public List solution9(int[] num_list, int n) {
         //굳이 배열 안 쓰고 리스트 써도 됨!!
         List<Integer> answer = new ArrayList<>();
 
@@ -133,5 +133,14 @@ public class ex13 {
         return answer;
     }
     
+    
+    //부분 문자열인지 확인하기
+    //부분 문자열이란 문자열에서 연속된 일부분에 해당하는 문자열을 의미합니다.
+    //예를 들어, 문자열 "ana", "ban", "anana", "banana", "n"는 모두 문자열 "banana"의 부분 문자열이지만, "aaa", "bnana", "wxyz"는 모두 "banana"의 부분 문자열이 아닙니다.
+    //문자열 my_string과 target이 매개변수로 주어질 때, target이 문자열 my_string의 부분 문자열이라면 1을, 아니라면 0을 return 하는 solution 함수를 작성해 주세요.
+    
+    public int solution10(String my_string, String target) {
+        return my_string.contains(target) ? 1 : 0;
+    }
     
 }
