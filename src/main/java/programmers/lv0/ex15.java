@@ -1,5 +1,9 @@
 package programmers.lv0;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ex15 {
 	
 	//문자열 곱하기
@@ -102,7 +106,22 @@ public class ex15 {
         
         return answer;
     }
-
+    
+    
+    //뒤에서 5등 위로
+    //정수로 이루어진 리스트 num_list가 주어집니다.
+    //num_list에서 가장 작은 5개의 수를 제외한 수들을 오름차순으로 담은 리스트를 return하도록 solution 함수를 완성해 주세요.
+    
+    public List<Integer> solution6(int[] num_list) {
+        List<Integer> answer = new ArrayList<>();
+        Arrays.sort(num_list); //오름차순 정렬
+        
+        for(int i = 5; i < num_list.length; i++) {
+            answer.add(num_list[i]);
+        }
+        
+        return answer;
+    }
 
     
 }
