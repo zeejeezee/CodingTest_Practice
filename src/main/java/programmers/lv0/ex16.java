@@ -45,6 +45,43 @@ public class ex16 {
     }
     
     
+    //l로 만들기
+    //알파벳 소문자로 이루어진 문자열 myString이 주어집니다.
+    //알파벳 순서에서 "l"보다 앞서는 모든 문자를 "l"로 바꾼 문자열을 return 하는 solution 함수를 완성해 주세요.
+    
+    public String solution3(String myString) {
+        char[] arr = myString.toCharArray(); //char형 배열
+        String answer = "";
+        
+        for (int i = 0; i < arr.length; i++) {
+            int cnt = 0;
+            for (char j = 'l'; j <= 'z'; j++) {
+                if (arr[i] == j) {
+                    cnt++;
+                }
+            }
+            
+            if (cnt == 0) { //j인 게 없다면
+              arr[i] = 'l';
+            }
+            
+            answer += arr[i];
+        }
+
+        return answer;
+    }
+    
+    //다른 사람 풀이
+    
+    public String solution3_1(String myString) {
+        return myString.replaceAll("[^l-z]", "l");
+    }
+    
+    public String solution3_2(String myString) {
+        return myString.replaceAll("[a-l]", "l");
+    }
+    
+    
     
     
 }
