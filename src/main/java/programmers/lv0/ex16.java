@@ -3,6 +3,7 @@ package programmers.lv0;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class ex16 {
 	
@@ -133,6 +134,35 @@ public class ex16 {
     	}
     	
     	return answer;
+    }
+    
+    
+    //덧셈식 출력하기
+    //두 정수 a, b가 주어질 때 다음과 같은 형태의 계산식을 출력하는 코드를 작성해 보세요.
+    //a + b = c
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println(a + " + " + b + " = " + (a + b));
+    }
+    
+    
+    //부분 문자열 이어 붙여 문자열 만들기
+    //길이가 같은 문자열 배열 my_strings와 이차원 정수 배열 parts가 매개변수로 주어집니다.
+    //parts[i]는 [s, e] 형태로, my_string[i]의 인덱스 s부터 인덱스 e까지의 부분 문자열을 의미합니다.
+    //각 my_strings의 원소의 parts에 해당하는 부분 문자열을 순서대로 이어 붙인 문자열을 return 하는 solution 함수를 작성해 주세요.
+    
+    public String solution8(String[] my_strings, int[][] parts) {
+    	String answer = "";
+
+        for(int i = 0; i < parts.length; i++) {
+            answer += my_strings[i].substring(parts[i][0], parts[i][1] + 1);
+        }
+        
+        return answer;
     }
     
     
