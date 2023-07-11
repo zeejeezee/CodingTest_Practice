@@ -1,6 +1,7 @@
 package programmers.lv0;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ex17 {
@@ -47,7 +48,7 @@ public class ex17 {
     //arr의 원소 중 delete_list의 원소를 모두 삭제하고
     //남은 원소들은 기존의 arr에 있던 순서를 유지한 배열을 return 하는 solution 함수를 작성해 주세요.
     
-    public List solution(int[] arr, int[] delete_list) {
+    public List solution3(int[] arr, int[] delete_list) {
         List<Integer> answer = new ArrayList<>();
         for(int i = 0; i < arr.length; i++) {
             answer.add(arr[i]);
@@ -57,6 +58,25 @@ public class ex17 {
                 }
             }
         }
+        
+        return answer;
+    }
+    
+    
+    //접미사 배열
+    //어떤 문자열에 대해서 접미사는 특정 인덱스부터 시작하는 문자열을 의미합니다.
+    //예를 들어, "banana"의 모든 접미사는 "banana", "anana", "nana", "ana", "na", "a"입니다.
+    //문자열 my_string이 매개변수로 주어질 때,
+    //my_string의 모든 접미사를 사전순으로 정렬한 문자열 배열을 return 하는 solution 함수를 작성해 주세요.
+    
+    public String[] solution4(String my_string) {
+        String[] answer = new String[my_string.length()];
+        
+        for(int i = 0; i < answer.length; i++) {
+            answer[i] = my_string.substring(i, my_string.length());
+        }
+        
+        Arrays.sort(answer);
         
         return answer;
     }
